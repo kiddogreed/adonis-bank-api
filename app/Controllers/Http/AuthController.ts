@@ -3,6 +3,26 @@ import User from 'App/Models/User'
 import LoginValidator from 'App/Validators/LoginValidator'
 export default class AuthController {
 
+  public async index({response, request}){
+
+    try {
+      const name = request.input('name')
+     // const query = await User.findOrFail('name',name)
+     const all = await User.findOrFail(1)
+      return all
+      if(!query){
+        return response.badRequest({'message':'request not found'})
+      }
+      console.log(query);
+    } catch (error) {
+      return response.badRequest()
+    }
+   
+    
+    
+   // return response.ok({'message':'data'})
+  }
+
   public async login({ request, response, auth }) {
     const data = request.only([
       'email',
